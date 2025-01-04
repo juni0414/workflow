@@ -1,0 +1,31 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Welcome Step
+        run: echo "Welcome to GitHub Actions"
+
+      - name: Clone Repository
+        uses: actions/checkout@v4
+
+      - name: Repository Information
+        run: |
+          echo "Following is the repository information:"
+          echo "Repository Name: ${{ github.repository }}"
+          echo "Event Name: ${{ github.event_name }}"
+          git branch testing
+          git branch
+          git log
+          git --version
+          git config --local --list
